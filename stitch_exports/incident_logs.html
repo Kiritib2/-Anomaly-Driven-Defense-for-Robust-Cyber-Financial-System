@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fraud &amp; Phishing Detection Platform - Incident Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#256af4",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0a0e17",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(37, 106, 244, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-navbar {
+            background: rgba(10, 14, 23, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-sidebar {
+            background: rgba(10, 14, 23, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary/30">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 glass-sidebar fixed inset-y-0 left-0 z-50 flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-2xl">shield</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight leading-tight">Sentinel<span class="text-primary">AI</span></h1>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<div class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2">Main Menu</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-lg shadow-primary/10" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Incident Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-sm font-medium">Threat Intelligence</span>
+</a>
+<div class="pt-6 text-xs font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2">Management</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">policy</span>
+<span class="text-sm font-medium">Policies</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/5">
+<div class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white/5">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Security administrator profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB-wXKawwklUnG49g5Ldu4Zq_Xi_TiXObFrovx6AvjdqZH32vDNVzXDRocjrUeQ1m2mlE_6g0sEsy_zmK1-cZeMCnKn0r5ukfDmlE6TGJe7UTlR600t8-BMbh6Ehw3cas8K_Ul46A7HfwJCqHpWOs3Slc9h5LlMRfiQpOfY52UEilH7-u6nEMKJgkmuj_x7cgofvqpivIfeqn13PmEOFGBQuLhbGdy5KQqT1EXsprDtp2KTYA_cuWzs6hr7jKxq77yoK5U3-4bEm5s"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Alex Chen</p>
+<p class="text-xs text-slate-500 truncate">Fraud Analyst</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 min-h-screen relative">
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Navbar -->
+<header class="glass-navbar sticky top-0 z-40 h-16 flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-white/5 border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary transition-all text-white placeholder-slate-500" placeholder="Search incidents, IPs, or threat types..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-lg hover:bg-white/5 text-slate-400 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg hover:bg-white/5 text-slate-400 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h2 class="text-3xl font-bold tracking-tight mb-2">Incident Logs</h2>
+<p class="text-slate-400">Real-time monitoring of global phishing and fraud attempts across all clusters.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+                            Filter
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-medium transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">download</span>
+                            Export CSV
+                        </button>
+</div>
+</div>
+<!-- Filters/Tabs -->
+<div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+<button class="px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-sm font-medium whitespace-nowrap">All Threats</button>
+<button class="px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-sm font-medium whitespace-nowrap transition-colors">Phishing</button>
+<button class="px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-sm font-medium whitespace-nowrap transition-colors">Account Takeover</button>
+<button class="px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-sm font-medium whitespace-nowrap transition-colors">Card Fraud</button>
+<button class="px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-sm font-medium whitespace-nowrap transition-colors">Credential Stuffing</button>
+</div>
+<!-- Main Glass Panel -->
+<div class="glass-panel rounded-xl overflow-hidden shadow-2xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/5 bg-white/5">
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Timestamp</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">IP Address</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Threat Type</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Risk Score</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Action Taken</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:42:01</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">192.168.1.45</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">Phishing</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 85%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">85</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-primary">Blocked</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:40:15</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">10.0.0.122</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20">Fraud</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 rounded-full" style="width: 92%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">92</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-slate-300">Flagged</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:38:44</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">172.16.254.1</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">Credential Stuffing</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 rounded-full" style="width: 40%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">40</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-slate-500">Monitored</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:35:10</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">45.12.33.102</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">Phishing</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 78%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">78</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-primary">Blocked</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:32:33</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">88.201.12.5</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">Malware Distribution</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 rounded-full" style="width: 95%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">95</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-slate-300">Isolated</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.03] transition-colors group cursor-pointer">
+<td class="px-6 py-5 whitespace-nowrap text-sm font-medium">2023-11-24 18:28:12</td>
+<td class="px-6 py-5 whitespace-nowrap font-mono text-sm text-slate-300">201.44.1.99</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20">Account Takeover</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 rounded-full" style="width: 65%;"></div>
+</div>
+<span class="text-sm font-bold text-slate-100">65</span>
+</div>
+</td>
+<td class="px-6 py-5 whitespace-nowrap">
+<span class="text-sm font-semibold text-slate-500">MFA Required</span>
+</td>
+<td class="px-6 py-5 whitespace-nowrap text-right">
+<button class="text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-white/5 flex items-center justify-between bg-white/[0.02]">
+<p class="text-sm text-slate-500">Showing <span class="text-slate-200">1</span> to <span class="text-slate-200">10</span> of <span class="text-slate-200">4,281</span> incidents</p>
+<div class="flex gap-2">
+<button class="size-8 flex items-center justify-center rounded-lg border border-white/10 hover:bg-white/5 transition-colors text-slate-400">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold">1</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-white/10 hover:bg-white/5 transition-colors text-slate-400 text-sm font-medium">2</button>
+<button class="size-8 flex items-center justify-center rounded-lg border border-white/10 hover:bg-white/5 transition-colors text-slate-400 text-sm font-medium">3</button>
+<span class="text-slate-500 px-1 pt-1">...</span>
+<button class="size-8 flex items-center justify-center rounded-lg border border-white/10 hover:bg-white/5 transition-colors text-slate-400">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

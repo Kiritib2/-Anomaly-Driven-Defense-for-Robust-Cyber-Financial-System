@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Cyber Fraud Protector",
+  "version": "1.0",
+  "description": "Protects against phishing URLs by analyzing them in real-time using ML.",
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Cyber Fraud Protector"
+  }
+}

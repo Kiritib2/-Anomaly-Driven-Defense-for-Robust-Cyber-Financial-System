@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FraudGuard - Phishing Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#256af4",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(37, 106, 244, 0.4);
+        }
+        .neon-glow-danger {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+        .bg-mesh {
+            background-color: #101622;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 106, 244, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(37, 106, 244, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-mesh text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 glass border-r border-white/10 flex flex-col hidden md:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">shield_lock</span>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-tight">FraudGuard</h1>
+<p class="text-xs text-slate-400">Security Suite v2.4</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white neon-glow-primary shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">search_check</span>
+<span class="font-medium">URL Scanner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-medium">Risk Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-medium">Scan History</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<div class="glass p-4 rounded-xl border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANEmEx3_olNxbl1FhGpMFaLUGoO804gbT21Un8Q-cm-VZ_L8u4zsZieqEJTHjcV9q1bWQN4Urk9X6B4BzxXfQpObahu0AB3uoadScwiuBtLLl7I6t1jVHqmbMJ1Kc8E4_eTu64DqN1m15MyESZnIaKe3eac48YJX-uty56HCjI9ZWunA0pOrV2JbfE1tvVixDB7vrnzYchF8IWTojdlON8-vVaauqMuhQIEQx13C2aZBKRJIXvwROkURog_DF7IDGgKweO1IQxuUll"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Chen</p>
+<p class="text-xs text-slate-500 truncate">Security Analyst</p>
+</div>
+</div>
+<button class="w-full text-xs bg-white/5 hover:bg-white/10 py-2 rounded-lg transition-colors border border-white/10">Log Out</button>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Navbar -->
+<header class="h-16 glass border-b border-white/10 flex items-center justify-between px-8 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined md:hidden">menu</span>
+<h2 class="text-lg font-semibold">Phishing Analysis</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-white/5 border border-white/10 rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Global search..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 text-slate-400 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 text-slate-400 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content -->
+<div class="p-8 max-w-6xl mx-auto w-full">
+<div class="mb-10">
+<h3 class="text-3xl font-bold mb-2">Check a URL</h3>
+<p class="text-slate-400 max-w-2xl">Use our advanced AI engine to scan suspicious URLs for phishing indicators, malicious scripts, and fraudulent behavior in real-time.</p>
+</div>
+<!-- Input Section -->
+<div class="glass p-8 rounded-2xl border-white/10 mb-10 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<label class="block text-sm font-medium text-slate-300 mb-3">Analyze Website URL</label>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">link</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-lg transition-all placeholder:text-slate-600" placeholder="https://secure-login-update.example-site.com/auth" type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/80 px-8 py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 neon-glow-primary group">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform">rocket_launch</span>
+                                Analyze URL
+                            </button>
+</div>
+</div>
+</div>
+<!-- Result Card -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Probability Score -->
+<div class="lg:col-span-1 glass rounded-2xl p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<h4 class="text-slate-400 font-medium mb-6 uppercase tracking-widest text-xs">Risk Probability</h4>
+<div class="relative flex items-center justify-center">
+<!-- SVG Gauge -->
+<svg class="w-48 h-48 -rotate-90">
+<circle cx="96" cy="96" fill="none" r="80" stroke="rgba(255,255,255,0.05)" stroke-width="12"></circle>
+<circle class="text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" cx="96" cy="96" fill="none" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="100" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-black text-white">82<span class="text-2xl text-slate-500">%</span></span>
+<span class="text-xs text-red-400 font-bold uppercase mt-1">Malicious</span>
+</div>
+</div>
+<div class="mt-8 flex gap-4 w-full">
+<div class="flex-1 text-center py-2 bg-white/5 rounded-lg border border-white/5">
+<p class="text-[10px] text-slate-500 uppercase">Confidence</p>
+<p class="text-sm font-bold">High (94%)</p>
+</div>
+<div class="flex-1 text-center py-2 bg-white/5 rounded-lg border border-white/5">
+<p class="text-[10px] text-slate-500 uppercase">Scan Time</p>
+<p class="text-sm font-bold">1.2s</p>
+</div>
+</div>
+</div>
+<!-- Risk Level Indicator -->
+<div class="lg:col-span-2 glass rounded-2xl p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-xl font-bold mb-1">Threat Level: High Risk</h4>
+<p class="text-slate-400 text-sm">Multiple phishing indicators detected on the target server.</p>
+</div>
+<div class="px-4 py-2 bg-red-500/20 border border-red-500/50 rounded-full text-red-500 text-xs font-bold uppercase flex items-center gap-2 neon-glow-danger">
+<span class="material-symbols-outlined text-sm">dangerous</span>
+                                High Danger
+                            </div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+<div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Suspicious Domain History</p>
+<p class="text-xs text-slate-500">Domain was registered 48 hours ago via privacy provider.</p>
+</div>
+<span class="material-symbols-outlined text-red-500">error</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+<div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Obfuscated JavaScript</p>
+<p class="text-xs text-slate-500">Script tags contain base64 encoded suspicious patterns.</p>
+</div>
+<span class="material-symbols-outlined text-orange-500">warning</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+<div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-500">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Brand Impersonation</p>
+<p class="text-xs text-slate-500">Visual elements resemble 'Microsoft Office 365' login page.</p>
+</div>
+<span class="material-symbols-outlined text-yellow-500">report</span>
+</div>
+</div>
+<div class="mt-8 flex justify-end gap-3">
+<button class="px-6 py-2 rounded-lg text-sm font-medium border border-white/10 hover:bg-white/5 transition-colors">Generate PDF Report</button>
+<button class="px-6 py-2 rounded-lg text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition-colors">Block Domain Globally</button>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
+<div class="glass p-4 rounded-xl border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold">Safe Domains</p>
+<p class="text-lg font-bold">12.4M</p>
+</div>
+</div>
+<div class="glass p-4 rounded-xl border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">block</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold">Threats Blocked</p>
+<p class="text-lg font-bold">842K</p>
+</div>
+</div>
+<div class="glass p-4 rounded-xl border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">update</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold">Database Update</p>
+<p class="text-lg font-bold">4m ago</p>
+</div>
+</div>
+<div class="glass p-4 rounded-xl border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-400">query_stats</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold">Daily Scans</p>
+<p class="text-lg font-bold">2.1M</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,1 @@
+Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue | Select-Object OwningProcess, State // for termating ther stale in port 8000

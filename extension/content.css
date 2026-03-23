@@ -1,0 +1,120 @@
+#phish-protector-warning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 2147483647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: white;
+}
+
+#phish-protector-warning-overlay * {
+    box-sizing: border-box;
+}
+
+.phish-warning-card {
+    background: #1e293b;
+    border: 1px solid #ef4444;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.25);
+    text-align: center;
+}
+
+.phish-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+.phish-title {
+    color: #ef4444;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.phish-desc {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.phish-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #0f172a;
+    border-radius: 8px;
+}
+
+.phish-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.phish-stat span {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.phish-stat strong {
+    font-size: 1.25rem;
+}
+
+.phish-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.phish-btn {
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.phish-btn-primary {
+    background: #ef4444;
+    color: white;
+}
+
+.phish-btn-primary:hover {
+    background: #dc2626;
+}
+
+.phish-btn-secondary {
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    margin-top: 10px;
+}
+
+.phish-btn-secondary:hover {
+    background: #334155;
+    color: white;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
