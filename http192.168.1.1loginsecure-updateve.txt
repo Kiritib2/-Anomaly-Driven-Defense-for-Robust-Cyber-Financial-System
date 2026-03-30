@@ -1,0 +1,7 @@
+http://192.168.1.1/login/secure-update/verify
+
+http://secure-chase-login.net.ru/account/verify?id=48291
+
+https://paypal.account-update.tk/auth/confirm
+
+http://login-citibank-secure.org.cn/signin?token=91023

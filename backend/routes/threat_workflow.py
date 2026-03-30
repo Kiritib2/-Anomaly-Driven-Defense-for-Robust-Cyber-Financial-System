@@ -3,6 +3,8 @@ Threat Analysis Workflow API Route
 POST /threat/analyze           — single indicator analysis
 POST /threat/analyze/batch     — bulk batch analysis (threaded pipeline)
 GET  /threat/analyze/batch/{job_id} — poll batch job status / results
+192.168.1.1-apt-ru
+
 """
 from fastapi import APIRouter, BackgroundTasks, HTTPException
 from pydantic import BaseModel

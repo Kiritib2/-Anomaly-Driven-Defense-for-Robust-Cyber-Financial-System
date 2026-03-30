@@ -1,0 +1,26 @@
+{
+  "http://192.168.1.1/login/secure-update/verify": {
+    "phishing_score": 100.0,
+    "risk_level": "critical",
+    "url": "http://192.168.1.1/login/secure-update/verify",
+    "features_extracted": 15
+  },
+  "http://secure-paypal-login.com.xyz/account/verify?id=12345": {
+    "phishing_score": 100.0,
+    "risk_level": "critical",
+    "url": "http://secure-paypal-login.com.xyz/account/verify?id=12345",
+    "features_extracted": 15
+  },
+  "https://google.com": {
+    "phishing_score": 0.0,
+    "risk_level": "low",
+    "url": "https://google.com",
+    "features_extracted": 15
+  },
+  "https://github.com/Kiritib2/-Anomaly-Driven-Defense-for-Robust-Cyber-Financial-System.git": {
+    "phishing_score": 71.0,
+    "risk_level": "high",
+    "url": "https://github.com/Kiritib2/-Anomaly-Driven-Defense-for-Robust-Cyber-Financial-System.git",
+    "features_extracted": 15
+  }
+}
